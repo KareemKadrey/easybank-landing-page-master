@@ -1,0 +1,111 @@
+.header {
+  position: relative;
+  z-index: 1;
+
+  &.open {
+    .header__toggle {
+      > span:first-child {
+        transform: rotate(45deg) translate(4px, 7px);
+      }
+
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+
+      > span:last-child {
+        transform: rotate(-45deg) translate(4px, -7px);
+      }
+    }
+  }
+
+  .overlay {
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-image: linear-gradient($DarkBlue, transparent);
+  }
+
+  nav {
+    position: relative;
+    background-color: white;
+    padding-top: 1.0625rem;
+    padding-bottom: 1.0625rem;
+  }
+  &__logo {
+    img {
+      width: 8.8125rem;
+      height: 1.375rem;
+    }
+  }
+
+  &__toggle {
+    > span {
+      display: block;
+      width: 1.5rem;
+      height: 3px;
+      background-color: $DarkBlue;
+      transition: all 300ms ease-in-out;
+      transform-origin: center;
+      &:not(:last-child) {
+        margin-bottom: 0.3125rem;
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    width: calc(100% - 3em);
+    left: 50%;
+    transform: translateX(-50%);
+    background: $White;
+    margin-top: 1.5rem;
+    padding: 1.625rem;
+    border-radius: 5px;
+
+    a {
+      display: block;
+      padding: 0.625rem;
+      color: $DarkBlue;
+      text-align: center;
+    }
+  }
+
+  &__links {
+    a {
+      position: relative;
+      font-size: $font-sm;
+      color: $GrayishBlue;
+      transition: color 300ms ease-in-out;
+
+      &::before {
+        content: "";
+        display: block;
+        background: linear-gradient(to right, $LimeGreen, $BrightCyan);
+        width: 100%;
+        height: 0.3125rem;
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: -1.875rem;
+        transform: scaleX(0);
+        transition: transform 300ms ease-in-out;
+      }
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+
+      &:hover {
+        color: $DarkBlue;
+        &::before {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
